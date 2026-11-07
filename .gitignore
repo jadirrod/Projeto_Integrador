@@ -1,0 +1,11 @@
+# Dependências e artefatos locais
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Rascunhos e evidências internas desta tarefa (não publicar)
+/.work/
+/repo-inspection.md
+/design-reference-search.md
+/docs/superpowers/plans/

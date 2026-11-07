@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1118">
+  <meta name="description" content="ZERO TRUST LAB — simulador educacional de decisões de acesso em redes híbridas.">
+  <title>Visão geral · ZERO TRUST LAB</title>
+  <link rel="icon" href="./assets/images/brand-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/app.css">
+  <script src="./js/ui/app.js" defer></script>
+</head>
+<body data-density="balanced">
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação principal">
+      <a class="brand-lockup" href="#dashboard" aria-label="ZERO TRUST LAB, visão geral" data-view="dashboard" data-title="Visão geral">
+        <img class="brand-mark" src="./assets/images/brand-mark.svg" alt="" width="38" height="38">
+        <span class="brand-copy">
+          <span class="brand-name">ZERO TRUST <b>LAB</b></span>
+          <span class="brand-subtitle">HYBRID NETWORK SIMULATOR</span>
+        </span>
+      </a>
+
+      <div class="sidebar-section-label">WORKSPACE</div>
+      <nav class="primary-nav" aria-label="Módulos do laboratório">
+        <button class="nav-item is-active" type="button" data-view="dashboard" data-title="Visão geral" aria-current="page">
+          <span class="nav-index">01</span><span>Visão geral</span>
+        </button>
+        <button class="nav-item" type="button" data-view="topology" data-title="Topologia de rede">
+          <span class="nav-index">02</span><span>Topologia de rede</span>
+        </button>
+        <button class="nav-item" type="button" data-view="identity" data-title="Identidades">
+          <span class="nav-index">03</span><span>Identidades</span>
+        </button>
+        <button class="nav-item" type="button" data-view="resources" data-title="Recursos">
+          <span class="nav-index">04</span><span>Recursos</span>
+        </button>
+        <button class="nav-item" type="button" data-view="policies" data-title="Políticas de acesso">
+          <span class="nav-index">05</span><span>Políticas de acesso</span>
+        </button>
+        <button class="nav-item" type="button" data-view="tests" data-title="Testes sintéticos">
+          <span class="nav-index">06</span><span>Testes sintéticos</span>
+        </button>
+        <button class="nav-item" type="button" data-view="events" data-title="Trilha de eventos">
+          <span class="nav-index">07</span><span>Trilha de eventos</span>
+        </button>
+        <button class="nav-item" type="button" data-view="report" data-title="Relatório">
+          <span class="nav-index">08</span><span>Relatório</span>
+        </button>
+        <button class="nav-item" type="button" data-view="documentation" data-title="Documentação">
+          <span class="nav-index">09</span><span>Documentação</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>AMBIENTE LOCAL</span>
+        <span class="build-label">V0</span>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <div class="topbar-context">
+          <span class="eyebrow">LAB / AMBIENTE DE SIMULAÇÃO</span>
+          <h1 id="page-title">Visão geral</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="simulation-badge"><span class="badge-dot" aria-hidden="true"></span>SIMULAÇÃO SINTÉTICA</span>
+          <button class="quiet-button" type="button" id="open-tweaks" aria-expanded="false" aria-controls="tweaks-panel">Ajustes visuais</button>
+        </div>
+      </header>
+
+      <main id="main-content" tabindex="-1">
+        <section class="view-panel is-active" data-panel="dashboard" aria-labelledby="dashboard-heading">
+          <div class="page-intro">
+            <div>
+              <p class="section-kicker">01 / DASHBOARD</p>
+              <h2 id="dashboard-heading">Visão operacional</h2>
+              <p class="intro-copy">Configure o contexto, execute casos sintéticos e compare como cada política decide o acesso.</p>
+            </div>
+            <button class="primary-button" type="button" disabled aria-describedby="engine-note">Executar bateria de testes</button>
+          </div>
+
+          <div class="notice-bar" role="status">
+            <span class="notice-mark" aria-hidden="true">i</span>
+            <p><strong>Protótipo v0.</strong> A estrutura visual está pronta; o motor de simulação ainda não está conectado. Nenhum dado ou resultado foi fabricado.</p>
+            <span class="notice-state">SEM EXECUÇÕES</span>
+          </div>
+          <p class="control-note" id="engine-note">A execução será habilitada quando as regras determinísticas forem implementadas.</p>
+
+          <div class="metric-grid" aria-label="Indicadores do laboratório">
+            <article class="metric-card">
+              <div class="metric-heading"><span>Tentativas</span><span class="metric-code">RUNS</span></div>
+              <p class="metric-value">—</p>
+              <p class="metric-foot">Aguardando primeira execução</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Acessos autorizados</span><span class="metric-code">ALLOW</span></div>
+              <p class="metric-value">—</p>
+              <p class="metric-foot">Sem resultados disponíveis</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Acessos bloqueados</span><span class="metric-code">DENY</span></div>
+              <p class="metric-value">—</p>
+              <p class="metric-foot">Sem resultados disponíveis</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-heading"><span>Eventos registrados</span><span class="metric-code">AUDIT</span></div>
+              <p class="metric-value">—</p>
+              <p class="metric-foot">Histórico ainda vazio</p>
+            </article>
+          </div>
+
+          <div class="section-heading-row">
+            <div>
+              <p class="section-kicker">COMPARAÇÃO A / B</p>
+              <h3>Decisão por arquitetura</h3>
+            </div>
+            <span class="muted-label">Mesmo teste · regras explícitas</span>
+          </div>
+          <div class="scenario-grid">
+            <article class="scenario-card" aria-labelledby="baseline-title">
+              <div class="scenario-header">
+                <div><span class="scenario-index">A</span><span class="scenario-overline">CENÁRIO</span></div>
+                <span class="scenario-state">SEM DADOS</span>
+              </div>
+              <h4 id="baseline-title">Segurança Tradicional</h4>
+              <p class="scenario-description">Baseline de comparação baseado nas regras configuradas para o laboratório.</p>
+              <div class="scenario-divider"></div>
+              <dl class="decision-list">
+                <div><dt>Autenticação</dt><dd>—</dd></div>
+                <div><dt>Autorização</dt><dd>—</dd></div>
+                <div><dt>Alcance do recurso</dt><dd>—</dd></div>
+                <div><dt>Tempo sintético</dt><dd>—</dd></div>
+              </dl>
+              <p class="empty-line">Aguardando execução do teste.</p>
+            </article>
+            <article class="scenario-card scenario-card-zta" aria-labelledby="zt-title">
+              <div class="scenario-header">
+                <div><span class="scenario-index">B</span><span class="scenario-overline">CENÁRIO</span></div>
+                <span class="scenario-state">SEM DADOS</span>
+              </div>
+              <h4 id="zt-title">Arquitetura Zero Trust</h4>
+              <p class="scenario-description">Avaliação de identidade, privilégio, dispositivo, contexto e recurso.</p>
+              <div class="scenario-divider"></div>
+              <dl class="decision-list">
+                <div><dt>Autenticação</dt><dd>—</dd></div>
+                <div><dt>Autorização</dt><dd>—</dd></div>
+                <div><dt>Alcance do recurso</dt><dd>—</dd></div>
+                <div><dt>Tempo sintético</dt><dd>—</dd></div>
+              </dl>
+              <p class="empty-line">Aguardando execução do teste.</p>
+            </article>
+          </div>
+
+          <div class="section-heading-row event-heading">
+            <div>
+              <p class="section-kicker">AUDIT / STREAM</p>
+              <h3>Eventos recentes</h3>
+            </div>
+            <button class="text-button" type="button" data-view="events" data-title="Trilha de eventos">Abrir trilha completa <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="table-frame">
+            <table class="event-table">
+              <caption class="visually-hidden">Eventos recentes da simulação</caption>
+              <thead><tr><th scope="col">Horário</th><th scope="col">Identidade</th><th scope="col">Recurso solicitado</th><th scope="col">Decisão</th></tr></thead>
+              <tbody><tr><td colspan="4" class="empty-table-cell">Ainda não há eventos. As tentativas registradas aparecerão aqui.</td></tr></tbody>
+            </table>
+          </div>
+          <p class="footnote">Indicadores e tempos serão calculados a partir de regras sintéticas. Não representam eficácia ou latência de infraestrutura real.</p>
+        </section>
+
+        <section class="view-panel" data-panel="topology" aria-labelledby="topology-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">02 / NETWORK TOPOLOGY</p><h2 id="topology-heading">Topologia de rede</h2><p class="intro-copy">Visualize os componentes conceituais do laboratório híbrido.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Diagrama interativo</h3><p>O diagrama e a seleção de componentes serão implementados na próxima etapa.</p><div class="topology-list" aria-label="Componentes previstos"><span>Internet</span><span>pfSense</span><span>Segmentos VLAN</span><span>Active Directory</span><span>Microsoft Entra ID</span><span>Rocky Linux</span><span>Microsoft Azure</span></div></div>
+        </section>
+
+        <section class="view-panel" data-panel="identity" aria-labelledby="identity-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">03 / IDENTITY MANAGEMENT</p><h2 id="identity-heading">Identidades</h2><p class="intro-copy">Usuários exclusivamente fictícios, com grupos, papéis, estado da conta e contexto de dispositivo.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Cadastro de identidades</h3><p>O CRUD de usuários e grupos será conectado ao armazenamento local. Nenhuma credencial real será solicitada.</p><p class="inline-data-label">Campos previstos <span>Identificador · papel · grupo · dispositivo · privilégio · recursos</span></p></div>
+        </section>
+
+        <section class="view-panel" data-panel="resources" aria-labelledby="resources-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">04 / RESOURCE MANAGEMENT</p><h2 id="resources-heading">Recursos</h2><p class="intro-copy">Servidores, serviços e segmentos simulados para os experimentos.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Catálogo de recursos</h3><p>Os recursos serão fictícios e configuráveis. Endereços IP não apontarão para equipamentos reais.</p><p class="inline-data-label">Campos previstos <span>Nome · IP fictício · segmento · criticidade · requisitos</span></p></div>
+        </section>
+
+        <section class="view-panel" data-panel="policies" aria-labelledby="policies-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">05 / POLICY ENGINE</p><h2 id="policies-heading">Políticas de acesso</h2><p class="intro-copy">Cada decisão precisa mostrar os critérios aplicados e uma justificativa rastreável.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Estados de decisão</h3><div class="decision-tags"><span class="decision-tag allow">ALLOW</span><span class="decision-tag deny">DENY</span><span class="decision-tag restricted">RESTRICTED</span><span class="decision-tag review">REVIEW</span></div><p>O motor será determinístico. Nenhuma regra será aplicada a tráfego real.</p></div>
+        </section>
+
+        <section class="view-panel" data-panel="tests" aria-labelledby="tests-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">06 / TEST RUNNER</p><h2 id="tests-heading">Testes sintéticos</h2><p class="intro-copy">Os mesmos parâmetros serão avaliados nos cenários Baseline e Zero Trust.</p></div><button class="primary-button" type="button" disabled>Motor em preparação</button></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Casos previstos</h3><ol class="test-list"><li>Credencial inválida</li><li>Usuário autenticado sem privilégio</li><li>Dispositivo comprometido</li><li>Movimentação lateral</li><li>Acesso remoto indevido</li><li>Escalada de privilégios</li><li>Acesso a recurso crítico</li></ol></div>
+        </section>
+
+        <section class="view-panel" data-panel="events" aria-labelledby="events-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">07 / EVENT LOG</p><h2 id="events-heading">Trilha de eventos</h2><p class="intro-copy">Registro local das tentativas, decisões, justificativas e políticas aplicadas.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / SEM REGISTROS</span><h3>O histórico está vazio</h3><p>Quando o motor for implementado, os eventos serão armazenados somente neste navegador e poderão ser exportados.</p></div>
+        </section>
+
+        <section class="view-panel" data-panel="report" aria-labelledby="report-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">08 / EXPERIMENT REPORT</p><h2 id="report-heading">Relatório</h2><p class="intro-copy">Resumo derivado das execuções e da configuração escolhida pelo usuário.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / SEM RESULTADOS</span><h3>Nenhum experimento para relatar</h3><p>O relatório não será gerado com números demonstrativos ou dados aleatórios.</p></div>
+        </section>
+
+        <section class="view-panel" data-panel="documentation" aria-labelledby="documentation-heading" hidden>
+          <div class="page-intro"><div><p class="section-kicker">09 / DOCUMENTATION</p><h2 id="documentation-heading">Documentação</h2><p class="intro-copy">Metodologia, critérios de reprodução, definições e limitações do laboratório.</p></div></div>
+          <div class="placeholder-panel"><span class="placeholder-tag">V0 / DOCUMENTAÇÃO EM PREPARAÇÃO</span><h3>Zero Trust em ambiente híbrido</h3><p>O projeto complementa o estudo acadêmico sobre Microsoft Azure, Active Directory e pfSense. A relação entre Policy Engine, Policy Administrator e pontos de decisão/enforcement será documentada sem atribuir resultados reais ao simulador.</p><p class="inline-data-label">Referências-base <span>NIST SP 800-207 · NIST SP 1800-35 · documentação oficial das tecnologias</span></p></div>
+        </section>
+      </main>
+
+      <footer class="page-footer"><span>ZERO TRUST LAB · PROTÓTIPO LOCAL V0</span><span>Somente simulação · sem tráfego real</span></footer>
+    </div>
+  </div>
+
+  <aside class="tweaks-panel" id="tweaks-panel" aria-label="Ajustes visuais" hidden>
+    <div class="tweaks-header"><div><p class="section-kicker">APARÊNCIA</p><h2>Ajustes visuais</h2></div><button class="close-button" type="button" id="close-tweaks" aria-label="Fechar ajustes">Fechar</button></div>
+    <fieldset class="tweak-group"><legend>Densidade do painel</legend>
+      <button class="tweak-choice is-selected" type="button" data-density-choice="balanced" aria-pressed="true">Equilibrada</button>
+      <button class="tweak-choice" type="button" data-density-choice="compact" aria-pressed="false">Compacta</button>
+      <button class="tweak-choice" type="button" data-density-choice="presentation" aria-pressed="false">Apresentação</button>
+    </fieldset>
+    <div class="tweak-group"><span class="tweak-legend">Tema</span><button class="tweak-choice" type="button" id="theme-toggle" aria-pressed="false">Alternar tema claro</button></div>
+    <p class="tweak-note">O tema escuro é o padrão do laboratório. Estes ajustes alteram somente a visualização desta sessão.</p>
+  </aside>
+  <div class="live-region" id="live-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
