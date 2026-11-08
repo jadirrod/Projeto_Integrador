@@ -1,0 +1,15 @@
+{
+  "name": "zero-trust-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulador acadêmico estático de políticas de acesso Zero Trust em rede híbrida.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:engine": "node --test tests/policy-engine.test.js tests/simulator.test.js",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

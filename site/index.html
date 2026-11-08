@@ -9,7 +9,8 @@
   <link rel="icon" href="./assets/images/brand-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/css/tokens.css">
   <link rel="stylesheet" href="./assets/css/app.css">
-  <script src="./js/ui/app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.1/dist/chart.umd.min.js" defer></script>
+  <script type="module" src="./js/ui/app.js"></script>
 </head>
 <body data-density="balanced">
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -17,214 +18,180 @@
     <aside class="sidebar" aria-label="Navegação principal">
       <a class="brand-lockup" href="#dashboard" aria-label="ZERO TRUST LAB, visão geral" data-view="dashboard" data-title="Visão geral">
         <img class="brand-mark" src="./assets/images/brand-mark.svg" alt="" width="38" height="38">
-        <span class="brand-copy">
-          <span class="brand-name">ZERO TRUST <b>LAB</b></span>
-          <span class="brand-subtitle">HYBRID NETWORK SIMULATOR</span>
-        </span>
+        <span class="brand-copy"><span class="brand-name">ZERO TRUST <b>LAB</b></span><span class="brand-subtitle">HYBRID NETWORK SIMULATOR</span></span>
       </a>
-
       <div class="sidebar-section-label">WORKSPACE</div>
       <nav class="primary-nav" aria-label="Módulos do laboratório">
-        <button class="nav-item is-active" type="button" data-view="dashboard" data-title="Visão geral" aria-current="page">
-          <span class="nav-index">01</span><span>Visão geral</span>
-        </button>
-        <button class="nav-item" type="button" data-view="topology" data-title="Topologia de rede">
-          <span class="nav-index">02</span><span>Topologia de rede</span>
-        </button>
-        <button class="nav-item" type="button" data-view="identity" data-title="Identidades">
-          <span class="nav-index">03</span><span>Identidades</span>
-        </button>
-        <button class="nav-item" type="button" data-view="resources" data-title="Recursos">
-          <span class="nav-index">04</span><span>Recursos</span>
-        </button>
-        <button class="nav-item" type="button" data-view="policies" data-title="Políticas de acesso">
-          <span class="nav-index">05</span><span>Políticas de acesso</span>
-        </button>
-        <button class="nav-item" type="button" data-view="tests" data-title="Testes sintéticos">
-          <span class="nav-index">06</span><span>Testes sintéticos</span>
-        </button>
-        <button class="nav-item" type="button" data-view="events" data-title="Trilha de eventos">
-          <span class="nav-index">07</span><span>Trilha de eventos</span>
-        </button>
-        <button class="nav-item" type="button" data-view="report" data-title="Relatório">
-          <span class="nav-index">08</span><span>Relatório</span>
-        </button>
-        <button class="nav-item" type="button" data-view="documentation" data-title="Documentação">
-          <span class="nav-index">09</span><span>Documentação</span>
-        </button>
+        <button class="nav-item is-active" type="button" data-view="dashboard" data-title="Visão geral" aria-current="page"><span class="nav-index">01</span><span>Visão geral</span></button>
+        <button class="nav-item" type="button" data-view="topology" data-title="Topologia de rede"><span class="nav-index">02</span><span>Topologia de rede</span></button>
+        <button class="nav-item" type="button" data-view="identity" data-title="Identidades"><span class="nav-index">03</span><span>Identidades</span></button>
+        <button class="nav-item" type="button" data-view="resources" data-title="Recursos"><span class="nav-index">04</span><span>Recursos</span></button>
+        <button class="nav-item" type="button" data-view="policies" data-title="Políticas de acesso"><span class="nav-index">05</span><span>Políticas de acesso</span></button>
+        <button class="nav-item" type="button" data-view="tests" data-title="Testes sintéticos"><span class="nav-index">06</span><span>Testes sintéticos</span></button>
+        <button class="nav-item" type="button" data-view="events" data-title="Trilha de eventos"><span class="nav-index">07</span><span>Trilha de eventos</span></button>
+        <button class="nav-item" type="button" data-view="report" data-title="Relatório"><span class="nav-index">08</span><span>Relatório</span></button>
+        <button class="nav-item" type="button" data-view="documentation" data-title="Documentação"><span class="nav-index">09</span><span>Documentação</span></button>
       </nav>
-
-      <div class="sidebar-footer">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>AMBIENTE LOCAL</span>
-        <span class="build-label">V0</span>
-      </div>
+      <div class="sidebar-footer"><span class="status-dot" aria-hidden="true"></span><span>AMBIENTE LOCAL</span><span class="build-label">V1</span></div>
     </aside>
 
     <div class="main-shell">
       <header class="topbar">
-        <div class="topbar-context">
-          <span class="eyebrow">LAB / AMBIENTE DE SIMULAÇÃO</span>
-          <h1 id="page-title">Visão geral</h1>
-        </div>
-        <div class="topbar-actions">
-          <span class="simulation-badge"><span class="badge-dot" aria-hidden="true"></span>SIMULAÇÃO SINTÉTICA</span>
-          <button class="quiet-button" type="button" id="open-tweaks" aria-expanded="false" aria-controls="tweaks-panel">Ajustes visuais</button>
-        </div>
+        <div class="topbar-context"><span class="eyebrow">LAB / AMBIENTE DE SIMULAÇÃO</span><h1 id="page-title">Visão geral</h1></div>
+        <div class="topbar-actions"><span class="simulation-badge"><span class="badge-dot" aria-hidden="true"></span>SIMULAÇÃO SINTÉTICA</span><button class="quiet-button" type="button" id="open-tweaks" aria-expanded="false" aria-controls="tweaks-panel">Ajustes visuais</button></div>
       </header>
-
       <main id="main-content" tabindex="-1">
+        <p class="app-status" id="app-status" role="status" aria-live="polite" hidden></p>
+
         <section class="view-panel is-active" data-panel="dashboard" aria-labelledby="dashboard-heading">
-          <div class="page-intro">
-            <div>
-              <p class="section-kicker">01 / DASHBOARD</p>
-              <h2 id="dashboard-heading">Visão operacional</h2>
-              <p class="intro-copy">Configure o contexto, execute casos sintéticos e compare como cada política decide o acesso.</p>
-            </div>
-            <button class="primary-button" type="button" disabled aria-describedby="engine-note">Executar bateria de testes</button>
+          <div class="page-intro"><div><p class="section-kicker">01 / DASHBOARD</p><h2 id="dashboard-heading">Visão operacional</h2><p class="intro-copy">Execute casos reproduzíveis e compare como cada política decide o acesso.</p></div><button class="primary-button" type="button" data-run-all>Executar bateria completa</button></div>
+          <div class="notice-bar" role="note"><span class="notice-mark" aria-hidden="true">i</span><p><strong>Ambiente sintético.</strong> Identidades, regras, endereços e tempos são fictícios; nenhuma rede real é acessada.</p><span class="notice-state" id="dashboard-run-state">SEM EXECUÇÕES</span></div>
+          <p class="control-note" id="engine-note">Tempo sintético é calculado pelas verificações do modelo; não representa latência de infraestrutura.</p>
+          <div class="metric-grid metric-grid-seven" aria-label="Indicadores do laboratório">
+            <article class="metric-card"><div class="metric-heading"><span>Identidades</span><span class="metric-code">USERS</span></div><p class="metric-value" data-metric="users">—</p><p class="metric-foot">Perfis fictícios cadastrados</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Recursos</span><span class="metric-code">ASSETS</span></div><p class="metric-value" data-metric="resources">—</p><p class="metric-foot">Recursos sintéticos configurados</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Tentativas</span><span class="metric-code">RUNS</span></div><p class="metric-value" data-metric="attempts">—</p><p class="metric-foot">Pares de teste executados</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Acessos autorizados</span><span class="metric-code">ALLOW</span></div><p class="metric-value" data-metric="allowed">—</p><p class="metric-foot">Decisões ALLOW nos dois cenários</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Acessos bloqueados</span><span class="metric-code">DENY</span></div><p class="metric-value" data-metric="blocked">—</p><p class="metric-foot">DENY e RESTRICTED</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Eventos</span><span class="metric-code">AUDIT</span></div><p class="metric-value" data-metric="events">—</p><p class="metric-foot">Registros locais de decisão</p></article>
+            <article class="metric-card"><div class="metric-heading"><span>Testes laterais</span><span class="metric-code">LATERAL</span></div><p class="metric-value" data-metric="lateral">—</p><p class="metric-foot">Pares executados nos dois cenários</p></article>
           </div>
-
-          <div class="notice-bar" role="status">
-            <span class="notice-mark" aria-hidden="true">i</span>
-            <p><strong>Protótipo v0.</strong> A estrutura visual está pronta; o motor de simulação ainda não está conectado. Nenhum dado ou resultado foi fabricado.</p>
-            <span class="notice-state">SEM EXECUÇÕES</span>
-          </div>
-          <p class="control-note" id="engine-note">A execução será habilitada quando as regras determinísticas forem implementadas.</p>
-
-          <div class="metric-grid" aria-label="Indicadores do laboratório">
-            <article class="metric-card">
-              <div class="metric-heading"><span>Tentativas</span><span class="metric-code">RUNS</span></div>
-              <p class="metric-value">—</p>
-              <p class="metric-foot">Aguardando primeira execução</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-heading"><span>Acessos autorizados</span><span class="metric-code">ALLOW</span></div>
-              <p class="metric-value">—</p>
-              <p class="metric-foot">Sem resultados disponíveis</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-heading"><span>Acessos bloqueados</span><span class="metric-code">DENY</span></div>
-              <p class="metric-value">—</p>
-              <p class="metric-foot">Sem resultados disponíveis</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-heading"><span>Eventos registrados</span><span class="metric-code">AUDIT</span></div>
-              <p class="metric-value">—</p>
-              <p class="metric-foot">Histórico ainda vazio</p>
-            </article>
-          </div>
-
-          <div class="section-heading-row">
-            <div>
-              <p class="section-kicker">COMPARAÇÃO A / B</p>
-              <h3>Decisão por arquitetura</h3>
-            </div>
-            <span class="muted-label">Mesmo teste · regras explícitas</span>
-          </div>
+          <div class="section-heading-row"><div><p class="section-kicker">COMPARAÇÃO A / B</p><h3>Decisão por arquitetura</h3></div><span class="muted-label">Mesma tentativa · políticas configuráveis</span></div>
           <div class="scenario-grid">
-            <article class="scenario-card" aria-labelledby="baseline-title">
-              <div class="scenario-header">
-                <div><span class="scenario-index">A</span><span class="scenario-overline">CENÁRIO</span></div>
-                <span class="scenario-state">SEM DADOS</span>
-              </div>
-              <h4 id="baseline-title">Segurança Tradicional</h4>
-              <p class="scenario-description">Baseline de comparação baseado nas regras configuradas para o laboratório.</p>
-              <div class="scenario-divider"></div>
-              <dl class="decision-list">
-                <div><dt>Autenticação</dt><dd>—</dd></div>
-                <div><dt>Autorização</dt><dd>—</dd></div>
-                <div><dt>Alcance do recurso</dt><dd>—</dd></div>
-                <div><dt>Tempo sintético</dt><dd>—</dd></div>
-              </dl>
-              <p class="empty-line">Aguardando execução do teste.</p>
-            </article>
-            <article class="scenario-card scenario-card-zta" aria-labelledby="zt-title">
-              <div class="scenario-header">
-                <div><span class="scenario-index">B</span><span class="scenario-overline">CENÁRIO</span></div>
-                <span class="scenario-state">SEM DADOS</span>
-              </div>
-              <h4 id="zt-title">Arquitetura Zero Trust</h4>
-              <p class="scenario-description">Avaliação de identidade, privilégio, dispositivo, contexto e recurso.</p>
-              <div class="scenario-divider"></div>
-              <dl class="decision-list">
-                <div><dt>Autenticação</dt><dd>—</dd></div>
-                <div><dt>Autorização</dt><dd>—</dd></div>
-                <div><dt>Alcance do recurso</dt><dd>—</dd></div>
-                <div><dt>Tempo sintético</dt><dd>—</dd></div>
-              </dl>
-              <p class="empty-line">Aguardando execução do teste.</p>
-            </article>
+            <article class="scenario-card" aria-labelledby="baseline-title"><div class="scenario-header"><div><span class="scenario-index">A</span><span class="scenario-overline">CENÁRIO</span></div><span class="scenario-state" id="baseline-state">SEM DADOS</span></div><h4 id="baseline-title">Segurança Tradicional</h4><p class="scenario-description">Modelo didático coarse-grained baseado em perímetro e autenticação inicial.</p><div class="scenario-divider"></div><dl class="decision-list"><div><dt>ALLOW / DENY</dt><dd id="baseline-outcomes">—</dd></div><div><dt>Bloqueio indevido</dt><dd id="baseline-block-rate">—</dd></div><div><dt>Movimentação lateral contida</dt><dd id="baseline-lateral">—</dd></div><div><dt>Tempo sintético médio</dt><dd id="baseline-time">—</dd></div></dl></article>
+            <article class="scenario-card scenario-card-zta" aria-labelledby="zt-title"><div class="scenario-header"><div><span class="scenario-index">B</span><span class="scenario-overline">CENÁRIO</span></div><span class="scenario-state" id="zeroTrust-state">SEM DADOS</span></div><h4 id="zt-title">Arquitetura Zero Trust</h4><p class="scenario-description">Modelo didático de privilégio mínimo, postura de dispositivo, contexto e recurso.</p><div class="scenario-divider"></div><dl class="decision-list"><div><dt>ALLOW / DENY</dt><dd id="zeroTrust-outcomes">—</dd></div><div><dt>Bloqueio indevido</dt><dd id="zeroTrust-block-rate">—</dd></div><div><dt>Movimentação lateral contida</dt><dd id="zeroTrust-lateral">—</dd></div><div><dt>Tempo sintético médio</dt><dd id="zeroTrust-time">—</dd></div></dl></article>
           </div>
-
-          <div class="section-heading-row event-heading">
-            <div>
-              <p class="section-kicker">AUDIT / STREAM</p>
-              <h3>Eventos recentes</h3>
-            </div>
-            <button class="text-button" type="button" data-view="events" data-title="Trilha de eventos">Abrir trilha completa <span aria-hidden="true">↗</span></button>
+          <div class="section-heading-row"><div><p class="section-kicker">VISUALIZAÇÃO</p><h3>Resultados acumulados</h3></div><span class="muted-label" id="chart-load-state">Os gráficos usam eventos deste navegador.</span></div>
+          <div class="chart-grid">
+            <article class="chart-card"><h4>ALLOW e bloqueios por cenário</h4><div class="chart-frame"><canvas id="chart-outcomes" role="img" aria-label="Gráfico de decisões autorizadas e bloqueadas por cenário"></canvas><p class="chart-empty" data-chart-empty="outcomes">Execute testes para preencher o gráfico.</p></div></article>
+            <article class="chart-card"><h4>Comparação de bloqueio de tentativas indevidas</h4><div class="chart-frame"><canvas id="chart-comparison" role="img" aria-label="Taxa de bloqueio de tentativas classificadas como indevidas"></canvas><p class="chart-empty" data-chart-empty="comparison">Sem tentativas classificadas para calcular a taxa.</p></div></article>
+            <article class="chart-card"><h4>Movimentação lateral</h4><div class="chart-frame"><canvas id="chart-lateral" role="img" aria-label="Tentativas laterais contidas por cenário"></canvas><p class="chart-empty" data-chart-empty="lateral">Execute o caso de movimentação lateral.</p></div></article>
+            <article class="chart-card"><h4>Distribuição dos eventos</h4><div class="chart-frame"><canvas id="chart-events" role="img" aria-label="Distribuição dos eventos por decisão"></canvas><p class="chart-empty" data-chart-empty="events">Ainda não há eventos.</p></div></article>
+            <article class="chart-card chart-card-wide"><h4>Evolução das decisões registradas</h4><div class="chart-frame"><canvas id="chart-timeline" role="img" aria-label="Linha temporal das decisões de acesso"></canvas><p class="chart-empty" data-chart-empty="timeline">A linha temporal aparecerá após as execuções.</p></div></article>
           </div>
-          <div class="table-frame">
-            <table class="event-table">
-              <caption class="visually-hidden">Eventos recentes da simulação</caption>
-              <thead><tr><th scope="col">Horário</th><th scope="col">Identidade</th><th scope="col">Recurso solicitado</th><th scope="col">Decisão</th></tr></thead>
-              <tbody><tr><td colspan="4" class="empty-table-cell">Ainda não há eventos. As tentativas registradas aparecerão aqui.</td></tr></tbody>
-            </table>
-          </div>
-          <p class="footnote">Indicadores e tempos serão calculados a partir de regras sintéticas. Não representam eficácia ou latência de infraestrutura real.</p>
+          <div class="section-heading-row event-heading"><div><p class="section-kicker">AUDIT / STREAM</p><h3>Eventos recentes</h3></div><button class="text-button" type="button" data-view="events" data-title="Trilha de eventos">Abrir trilha completa <span aria-hidden="true">↗</span></button></div>
+          <div class="table-frame"><table class="event-table"><caption class="visually-hidden">Eventos sintéticos mais recentes</caption><thead><tr><th scope="col">Horário</th><th scope="col">Cenário</th><th scope="col">Identidade</th><th scope="col">Recurso solicitado</th><th scope="col">Decisão</th></tr></thead><tbody id="recent-events-body"><tr><td colspan="5" class="empty-table-cell">Ainda não há eventos.</td></tr></tbody></table></div>
+          <p class="footnote">A Baseline apresentada é uma configuração didática coarse-grained, não uma descrição universal de redes tradicionais. As taxas dependem dos casos e rótulos selecionados.</p>
         </section>
 
         <section class="view-panel" data-panel="topology" aria-labelledby="topology-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">02 / NETWORK TOPOLOGY</p><h2 id="topology-heading">Topologia de rede</h2><p class="intro-copy">Visualize os componentes conceituais do laboratório híbrido.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Diagrama interativo</h3><p>O diagrama e a seleção de componentes serão implementados na próxima etapa.</p><div class="topology-list" aria-label="Componentes previstos"><span>Internet</span><span>pfSense</span><span>Segmentos VLAN</span><span>Active Directory</span><span>Microsoft Entra ID</span><span>Rocky Linux</span><span>Microsoft Azure</span></div></div>
+          <div class="page-intro"><div><p class="section-kicker">02 / NETWORK TOPOLOGY</p><h2 id="topology-heading">Topologia de rede</h2><p class="intro-copy">Selecione um componente para consultar os atributos do modelo; todos os nós e endereços são fictícios.</p></div></div>
+          <div class="placeholder-panel topology-panel"><span class="placeholder-tag">MODELO CONCEITUAL · SEM CONEXÃO REAL</span><h3>Ambiente híbrido sintético</h3><div class="topology-flow" id="topology-diagram" aria-label="Diagrama conceitual da topologia"></div><div class="topology-columns"><div><h4>Segmentos e componentes</h4><div class="topology-list topology-node-list" id="topology-node-list" aria-label="Componentes selecionáveis"></div></div><aside class="topology-detail" id="topology-selected" aria-live="polite"><span class="placeholder-tag">SELECIONE UM NÓ</span><h4>Detalhes do componente</h4><p>A lista fornece a mesma navegação acessível do diagrama.</p></aside></div></div>
+          <section class="topology-path-panel form-panel" aria-labelledby="topology-path-heading"><div class="section-heading-row section-heading-tight"><div><p class="section-kicker">SIMULAÇÃO · ÚLTIMO CASO LATERAL</p><h3 id="topology-path-heading">Caminhos alcançados e bloqueados</h3></div><span class="muted-label">Apenas decisões sintéticas</span></div><p class="field-help" id="topology-path-empty">Execute o caso de movimentação lateral para exibir o percurso de cada cenário.</p><div id="topology-paths" class="topology-paths"></div></section>
+          <div class="section-heading-row"><div><p class="section-kicker">REGRAS CONFIGURADAS</p><h3>Comunicação entre segmentos</h3></div><label class="inline-field">Cenário <select id="topology-scenario"><option value="zeroTrust">Zero Trust</option><option value="baseline">Baseline</option></select></label></div>
+          <div class="table-frame"><table class="data-table"><thead><tr><th>Prioridade</th><th>Origem</th><th>Destino</th><th>Recurso</th><th>Efeito</th></tr></thead><tbody id="topology-rule-list"></tbody></table></div>
         </section>
 
         <section class="view-panel" data-panel="identity" aria-labelledby="identity-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">03 / IDENTITY MANAGEMENT</p><h2 id="identity-heading">Identidades</h2><p class="intro-copy">Usuários exclusivamente fictícios, com grupos, papéis, estado da conta e contexto de dispositivo.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Cadastro de identidades</h3><p>O CRUD de usuários e grupos será conectado ao armazenamento local. Nenhuma credencial real será solicitada.</p><p class="inline-data-label">Campos previstos <span>Identificador · papel · grupo · dispositivo · privilégio · recursos</span></p></div>
+          <div class="page-intro"><div><p class="section-kicker">03 / IDENTITY MANAGEMENT</p><h2 id="identity-heading">Identidades</h2><p class="intro-copy">Gerencie perfis fictícios e sinais de dispositivo. Nenhuma senha é coletada ou armazenada.</p></div></div>
+          <div class="form-panel"><div class="section-heading-row section-heading-tight"><div><p class="section-kicker">CADASTRO LOCAL</p><h3 id="user-form-title">Adicionar identidade</h3></div><span class="muted-label">Dados salvos somente neste navegador</span></div>
+            <form id="user-form" class="form-grid">
+              <label>ID (letras, números e hífen)<input id="user-id" required pattern="[a-z0-9][a-z0-9-]{1,63}" autocomplete="off"></label><label>Nome fictício<input id="user-name" required maxlength="80"></label>
+              <label>Grupo<select id="user-group" required></select></label><label>Papel<input id="user-role" required maxlength="40"></label>
+              <label>Estado da conta<select id="user-account-status"><option value="active">Ativa</option><option value="suspended">Suspensa</option><option value="disabled">Desativada</option></select></label>
+              <label>Nível de privilégio (0–4)<input id="user-privilege" type="number" min="0" max="4" step="1" value="1" required></label>
+              <label>Dispositivo associado<select id="user-device" required></select></label><label>Postura sintética do dispositivo<select id="user-device-trust"><option value="trusted">Confiável</option><option value="untrusted">Não confiável</option><option value="compromised">Comprometido</option></select></label>
+              <label class="checkbox-line"><input id="user-credential-valid" type="checkbox" checked> Credencial sintética válida</label><label class="checkbox-line"><input id="user-remote-allowed" type="checkbox"> Pode solicitar acesso remoto</label>
+              <label class="full-width">Recursos explicitamente concedidos<select id="user-resources" multiple size="4" aria-describedby="user-resource-help"></select><span id="user-resource-help" class="field-help">Use Ctrl ou Command para selecionar mais de um recurso.</span></label>
+              <div class="form-actions full-width"><button class="primary-button" type="submit">Salvar identidade</button><button class="secondary-button" type="button" id="user-form-reset">Limpar formulário</button></div>
+            </form>
+          </div>
+          <div class="section-heading-row"><div><p class="section-kicker">INVENTÁRIO</p><h3>Usuários e dispositivos</h3></div><span class="muted-label" id="user-count"></span></div>
+          <div class="table-frame"><table class="data-table"><thead><tr><th>Identidade</th><th>Grupo / papel</th><th>Privilégio</th><th>Conta / dispositivo</th><th>Ações</th></tr></thead><tbody id="users-table-body"></tbody></table></div>
         </section>
 
         <section class="view-panel" data-panel="resources" aria-labelledby="resources-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">04 / RESOURCE MANAGEMENT</p><h2 id="resources-heading">Recursos</h2><p class="intro-copy">Servidores, serviços e segmentos simulados para os experimentos.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Catálogo de recursos</h3><p>Os recursos serão fictícios e configuráveis. Endereços IP não apontarão para equipamentos reais.</p><p class="inline-data-label">Campos previstos <span>Nome · IP fictício · segmento · criticidade · requisitos</span></p></div>
+          <div class="page-intro"><div><p class="section-kicker">04 / RESOURCE MANAGEMENT</p><h2 id="resources-heading">Recursos</h2><p class="intro-copy">Configure ativos sintéticos, segmentos, criticidade e grupos autorizados. Endereços devem ser IPv4 privados RFC 1918.</p></div></div>
+          <div class="form-panel"><div class="section-heading-row section-heading-tight"><div><p class="section-kicker">CATÁLOGO LOCAL</p><h3 id="resource-form-title">Adicionar recurso</h3></div><span class="muted-label">Não aponta para hosts reais</span></div>
+            <form id="resource-form" class="form-grid">
+              <label>ID (letras, números e hífen)<input id="resource-id" required pattern="[a-z0-9][a-z0-9-]{1,63}" autocomplete="off"></label><label>Nome fictício<input id="resource-name" required maxlength="80"></label>
+              <label>Tipo<input id="resource-type" required maxlength="40" value="service"></label><label>IPv4 privado<input id="resource-ip" required inputmode="decimal" placeholder="10.30.30.99"></label>
+              <label>Segmento<select id="resource-segment" required></select></label><label>Criticidade<select id="resource-criticality"><option value="low">Baixa</option><option value="medium" selected>Média</option><option value="high">Alta</option><option value="critical">Crítica</option></select></label>
+              <label>Privilégio requerido (0–4)<input id="resource-privilege" type="number" min="0" max="4" step="1" value="1" required></label><label class="checkbox-line"><input id="resource-requires-mfa" type="checkbox"> Exigir MFA sintético neste recurso</label><label>Grupos autorizados<select id="resource-groups" multiple size="4"></select></label>
+              <div class="form-actions full-width"><button class="primary-button" type="submit">Salvar recurso</button><button class="secondary-button" type="button" id="resource-form-reset">Limpar formulário</button></div>
+            </form>
+          </div>
+          <div class="section-heading-row"><div><p class="section-kicker">INVENTÁRIO</p><h3>Recursos e requisitos</h3></div><span class="muted-label" id="resource-count"></span></div>
+          <div class="table-frame"><table class="data-table"><thead><tr><th>Recurso</th><th>IP sintético</th><th>Segmento</th><th>Criticidade</th><th>Grupos / privilégio</th><th>Ações</th></tr></thead><tbody id="resources-table-body"></tbody></table></div>
         </section>
 
         <section class="view-panel" data-panel="policies" aria-labelledby="policies-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">05 / POLICY ENGINE</p><h2 id="policies-heading">Políticas de acesso</h2><p class="intro-copy">Cada decisão precisa mostrar os critérios aplicados e uma justificativa rastreável.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Estados de decisão</h3><div class="decision-tags"><span class="decision-tag allow">ALLOW</span><span class="decision-tag deny">DENY</span><span class="decision-tag restricted">RESTRICTED</span><span class="decision-tag review">REVIEW</span></div><p>O motor será determinístico. Nenhuma regra será aplicada a tráfego real.</p></div>
+          <div class="page-intro"><div><p class="section-kicker">05 / POLICY ENGINE</p><h2 id="policies-heading">Políticas de acesso</h2><p class="intro-copy">Altere controles booleanos e regras de rede; novas execuções usam a configuração atual e eventos antigos mantêm seu snapshot.</p></div></div>
+          <div class="form-panel"><div class="form-grid policy-toolbar"><label>Cenário a editar<select id="policy-scenario"><option value="baseline">Segurança Tradicional · Baseline</option><option value="zeroTrust">Arquitetura Zero Trust · demonstração</option></select></label><span class="field-help">A Baseline padrão é um exemplo didático coarse-grained, não uma caracterização de toda arquitetura tradicional.</span></div>
+            <form id="scenario-policy-form" class="policy-toggle-grid">
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="enforceDeviceTrust"><span>Exigir dispositivo confiável</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="blockCompromisedDevice"><span>Conter dispositivo comprometido</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="requireVpnForRemote"><span>Exigir VPN em acesso remoto</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="requireMfaForRemote"><span>Exigir MFA em acesso remoto</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="enforceResourceGroups"><span>Validar grupo permitido pelo recurso</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="enforceUserResourceGrants"><span>Exigir concessão explícita à identidade</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="enforceMinimumPrivilege"><span>Aplicar privilégio mínimo do recurso</span></label>
+              <label class="checkbox-card"><input type="checkbox" data-policy-field="enforceResourceMfa"><span>Aplicar MFA exigido por recurso</span></label>
+              <label>Política de rede padrão<select data-policy-field="defaultNetworkPolicy"><option value="deny">DENY (padrão fechado)</option><option value="allow">ALLOW</option></select></label>
+              <label>Base sintética (ms)<input type="number" min="0" max="1000" step="1" data-policy-field="syntheticBaseMs"></label>
+              <label>Custo por verificação (ms)<input type="number" min="0" max="1000" step="1" data-policy-field="syntheticCheckMs"></label>
+              <button class="primary-button" type="submit">Salvar política</button>
+            </form>
+          </div>
+          <div class="section-heading-row"><div><p class="section-kicker">ENFORCEMENT DE SEGMENTOS</p><h3>Regra de comunicação</h3></div></div>
+          <div class="form-panel"><form id="network-rule-form" class="form-grid rule-grid">
+            <label>ID<input id="rule-id" required pattern="[a-z0-9][a-z0-9-]{1,63}" placeholder="custom-rule-1"></label><label>Nome<input id="rule-name" required maxlength="80"></label>
+            <label>Prioridade<input id="rule-priority" type="number" min="0" max="10000" value="100" required></label><label>Origem<select id="rule-source" required></select></label>
+            <label>Destino<select id="rule-destination" required></select></label><label>Recurso<select id="rule-resource" required></select></label>
+            <label>Efeito<select id="rule-effect"><option value="ALLOW">ALLOW</option><option value="DENY">DENY</option></select></label>
+            <div class="form-actions"><button class="primary-button" type="submit">Adicionar regra</button></div>
+          </form></div>
+          <div class="table-frame"><table class="data-table"><thead><tr><th>Prioridade</th><th>Regra</th><th>Origem</th><th>Destino / recurso</th><th>Efeito</th><th>Ações</th></tr></thead><tbody id="network-rules-body"></tbody></table></div>
         </section>
 
         <section class="view-panel" data-panel="tests" aria-labelledby="tests-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">06 / TEST RUNNER</p><h2 id="tests-heading">Testes sintéticos</h2><p class="intro-copy">Os mesmos parâmetros serão avaliados nos cenários Baseline e Zero Trust.</p></div><button class="primary-button" type="button" disabled>Motor em preparação</button></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / EM PREPARAÇÃO</span><h3>Casos previstos</h3><ol class="test-list"><li>Credencial inválida</li><li>Usuário autenticado sem privilégio</li><li>Dispositivo comprometido</li><li>Movimentação lateral</li><li>Acesso remoto indevido</li><li>Escalada de privilégios</li><li>Acesso a recurso crítico</li></ol></div>
+          <div class="page-intro"><div><p class="section-kicker">06 / TEST RUNNER</p><h2 id="tests-heading">Testes sintéticos</h2><p class="intro-copy">A mesma tentativa e os mesmos parâmetros são avaliados nos dois cenários.</p></div><button class="primary-button" type="button" id="run-all-tests">Executar bateria completa</button></div>
+          <div class="form-panel"><div class="form-grid"><label>Conjunto predefinido<select id="test-preset"></select></label><label>Identidade para esta execução<select id="attempt-user"></select></label><label>Recurso para esta execução<select id="attempt-resource"></select></label><label class="checkbox-line"><input id="attempt-remote" type="checkbox"> Marcar como acesso remoto</label><label class="checkbox-line"><input id="attempt-vpn" type="checkbox"> VPN sintética verificada</label><label class="checkbox-line"><input id="attempt-mfa" type="checkbox"> MFA sintético verificado</label></div><p class="field-help">As opções substituem os campos padrão do caso escolhido. A rota de movimentação lateral mantém a sequência definida no catálogo.</p><div class="test-case-list" id="test-cases" aria-label="Casos para execução"></div><div class="form-actions"><button class="primary-button" type="button" id="run-selected-tests">Executar casos selecionados</button></div></div>
+          <details class="form-panel custom-attempt-panel"><summary>Executar solicitação personalizada</summary><form id="custom-request-form" class="form-grid">
+            <label>Identidade<select id="custom-user"></select></label><label>Recurso<select id="custom-resource"></select></label>
+            <label>Classificação para métricas<select id="custom-classification"><option value="legitimate">Acesso legítimo esperado</option><option value="adverse">Tentativa indevida esperada</option><option value="unclassified">Não classificar</option></select></label>
+            <label>Nível solicitado (opcional)<input id="custom-privilege" type="number" min="0" max="4" step="1" placeholder="Sem elevação"></label>
+            <label class="checkbox-line"><input id="custom-remote" type="checkbox"> Acesso remoto</label><label class="checkbox-line"><input id="custom-vpn" type="checkbox"> VPN verificada</label><label class="checkbox-line"><input id="custom-mfa" type="checkbox"> MFA verificado</label>
+            <div class="form-actions full-width"><button class="primary-button" type="submit">Avaliar solicitação</button></div>
+          </form><p class="field-help">A classificação define o denominador das taxas. Use “legítimo” somente quando o objetivo esperado do pedido for legítimo.</p></details>
+          <div class="section-heading-row"><div><p class="section-kicker">ÚLTIMA EXECUÇÃO</p><h3>Resultados pareados</h3></div><span class="muted-label" id="test-run-summary">Nenhum teste executado</span></div>
+          <div class="table-frame"><table class="data-table result-table"><thead><tr><th>Teste</th><th>Cenário</th><th>Autenticação</th><th>Autorização</th><th>Decisão</th><th>Recursos alcançados</th><th>Tempo sintético</th><th>Justificativa</th></tr></thead><tbody id="test-results-body"><tr><td colspan="8" class="empty-table-cell">Execute um caso para ver a comparação.</td></tr></tbody></table></div>
         </section>
 
         <section class="view-panel" data-panel="events" aria-labelledby="events-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">07 / EVENT LOG</p><h2 id="events-heading">Trilha de eventos</h2><p class="intro-copy">Registro local das tentativas, decisões, justificativas e políticas aplicadas.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / SEM REGISTROS</span><h3>O histórico está vazio</h3><p>Quando o motor for implementado, os eventos serão armazenados somente neste navegador e poderão ser exportados.</p></div>
+          <div class="page-intro"><div><p class="section-kicker">07 / EVENT LOG</p><h2 id="events-heading">Trilha de eventos</h2><p class="intro-copy">Histórico local com origem, destino, resultado, regra aplicada e snapshot da configuração.</p></div></div>
+          <div class="form-panel event-toolbar"><label>Pesquisar<input id="event-search" type="search" placeholder="Usuário, recurso, ID ou motivo"></label><label>Cenário<select id="event-scenario-filter"><option value="all">Todos</option><option value="baseline">Baseline</option><option value="zeroTrust">Zero Trust</option></select></label><label>Decisão<select id="event-outcome-filter"><option value="all">Todas</option><option>ALLOW</option><option>DENY</option><option>RESTRICTED</option><option>REVIEW</option></select></label><div class="form-actions"><button class="secondary-button" type="button" id="export-events-csv">Exportar CSV</button><button class="secondary-button" type="button" id="export-events-json">Exportar JSON</button><button class="danger-button" type="button" id="clear-events">Limpar histórico</button></div></div>
+          <div class="table-frame"><table class="data-table"><thead><tr><th>Timestamp</th><th>ID</th><th>Cenário</th><th>Usuário / dispositivo</th><th>Origem → destino</th><th>Decisão</th><th>Detalhes</th></tr></thead><tbody id="events-table-body"></tbody></table></div><p class="field-help" id="event-count"></p>
         </section>
 
         <section class="view-panel" data-panel="report" aria-labelledby="report-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">08 / EXPERIMENT REPORT</p><h2 id="report-heading">Relatório</h2><p class="intro-copy">Resumo derivado das execuções e da configuração escolhida pelo usuário.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / SEM RESULTADOS</span><h3>Nenhum experimento para relatar</h3><p>O relatório não será gerado com números demonstrativos ou dados aleatórios.</p></div>
+          <div class="page-intro"><div><p class="section-kicker">08 / EXPERIMENT REPORT</p><h2 id="report-heading">Relatório experimental</h2><p class="intro-copy">Resumo derivado da configuração e dos eventos locais, sem conclusões fora dos dados simulados.</p></div><div class="form-actions"><button class="secondary-button" type="button" id="report-refresh">Atualizar relatório</button><button class="secondary-button" type="button" id="report-export-csv">Exportar CSV</button><button class="secondary-button" type="button" id="report-export-json">Exportar JSON</button><button class="secondary-button" type="button" id="report-print">Imprimir / PDF</button></div></div>
+          <div class="notice-bar report-disclosure"><span class="notice-mark" aria-hidden="true">i</span><p><strong>Resultados obtidos por simulação sintética.</strong> Não representam medições reais de infraestrutura nem comprovam a eficácia de uma arquitetura implantada.</p></div>
+          <div class="report-summary" id="report-summary"><p>Aguardando execuções para compor o relatório.</p></div>
         </section>
 
         <section class="view-panel" data-panel="documentation" aria-labelledby="documentation-heading" hidden>
-          <div class="page-intro"><div><p class="section-kicker">09 / DOCUMENTATION</p><h2 id="documentation-heading">Documentação</h2><p class="intro-copy">Metodologia, critérios de reprodução, definições e limitações do laboratório.</p></div></div>
-          <div class="placeholder-panel"><span class="placeholder-tag">V0 / DOCUMENTAÇÃO EM PREPARAÇÃO</span><h3>Zero Trust em ambiente híbrido</h3><p>O projeto complementa o estudo acadêmico sobre Microsoft Azure, Active Directory e pfSense. A relação entre Policy Engine, Policy Administrator e pontos de decisão/enforcement será documentada sem atribuir resultados reais ao simulador.</p><p class="inline-data-label">Referências-base <span>NIST SP 800-207 · NIST SP 1800-35 · documentação oficial das tecnologias</span></p></div>
+          <div class="page-intro"><div><p class="section-kicker">09 / DOCUMENTATION</p><h2 id="documentation-heading">Documentação</h2><p class="intro-copy">Como reproduzir os casos, interpretar as métricas e entender os limites do modelo.</p></div></div>
+          <div class="documentation-grid">
+            <article class="placeholder-panel"><span class="placeholder-tag">OBJETIVO</span><h3>Escopo do laboratório</h3><p>O sistema compara duas configurações de política em uma rede híbrida fictícia. A Baseline de demonstração usa regras coarse-grained após autenticação; o cenário Zero Trust aplica contexto, postura, MFA opcional por recurso, privilégio mínimo e concessão explícita. Os exemplos são editáveis e não descrevem universalmente outras arquiteturas.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">NIST SP 800-207</span><h3>Papéis conceituais</h3><p>O Policy Engine avalia políticas e informações de apoio e decide conceder, negar ou revogar acesso. O Policy Administrator executa a decisão comunicando comandos ao enforcement point. As funções PE e PA compõem o Policy Decision Point (PDP); o Policy Enforcement Point (PEP) aplica a decisão. Esta aplicação representa os papéis didaticamente, sem implementar serviços distribuídos ou constituir implantação certificada de ZTA.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">ARTIGO CIENTÍFICO</span><h3>Complemento experimental</h3><p>Este simulador complementa o artigo “Implementação e Avaliação de uma Arquitetura Zero Trust em Ambiente Híbrido Utilizando Microsoft Azure, Active Directory e pfSense”, de Jadir Gonçalves Rodrigues, do Centro Universitário Senac-RS — Campus Pelotas. Ele não reproduz a infraestrutura do artigo nem substitui medições empíricas.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">REPRODUTIBILIDADE</span><h3>Repetir um experimento</h3><p>Escolha um preset ou os sete casos, execute a bateria e compare os resultados lado a lado. A decisão deriva de listas de controle e regras de segmento ordenadas por prioridade. O modelo não usa aleatoriedade; eventos e painéis são atualizados progressivamente. Eventos guardam a configuração e a regra aplicada naquele momento.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">MÉTRICAS</span><h3>Definições e limites</h3><p>Taxa de bloqueio = tentativas classificadas como indevidas com resultado DENY ou RESTRICTED ÷ tentativas indevidas classificadas × 100. Taxa de sucesso legítimo = pedidos classificados como legítimos com ALLOW ÷ pedidos legítimos classificados × 100. Com denominador zero, a interface mostra “sem dados”. RESTRICTED é contenção; REVIEW permanece separado e não conta como bloqueio. O relatório também compara recursos alcançados por identidade.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">PRIVACIDADE LOCAL</span><h3>Armazenamento e dados</h3><p>Identidades, recursos, políticas e eventos são persistidos em localStorage neste navegador. A biblioteca Chart.js é carregada de CDN para desenhar gráficos; os dados do experimento não são enviados ao CDN. É possível exportar CSV/JSON e limpar o histórico sem apagar a configuração.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">LIMITAÇÕES</span><h3>Sem tráfego real</h3><p>IPs, dispositivos, tempos e resultados são sintéticos. Regras de prioridade e controles de MFA são abstrações didáticas, não emulação de pfSense ou serviço AAA. Não há chamadas a Azure, Active Directory, Entra ID, pfSense, Rocky Linux ou serviços externos de autenticação. O tempo exibido é uma fórmula sobre verificações do modelo, não benchmark de equipamento.</p></article>
+            <article class="placeholder-panel"><span class="placeholder-tag">REFERÊNCIAS OFICIAIS</span><h3>Fontes-base</h3><p><a href="https://csrc.nist.gov/pubs/sp/800/207/final" target="_blank" rel="noreferrer">NIST SP 800-207 — Zero Trust Architecture</a></p><p><a href="https://csrc.nist.gov/pubs/sp/1800/35/final" target="_blank" rel="noreferrer">NIST SP 1800-35 — Implementing a Zero Trust Architecture</a></p><p><a href="https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-overview" target="_blank" rel="noreferrer">Microsoft Zero Trust Guidance</a></p><p><a href="https://docs.netgate.com/pfsense/en/latest/firewall/rule-methodology.html" target="_blank" rel="noreferrer">Netgate pfSense — metodologia de regras de firewall</a></p><p><a href="https://freeradius.org/documentation/" target="_blank" rel="noreferrer">FreeRADIUS — documentação oficial</a></p><p><a href="https://www.chartjs.org/docs/latest/getting-started/installation.html" target="_blank" rel="noreferrer">Documentação de instalação do Chart.js</a></p></article>
+          </div>
+          <div class="form-actions documentation-actions"><button class="secondary-button" type="button" id="reset-demo-state">Restaurar dados demonstrativos</button><span class="field-help">Esta ação substitui a configuração local e remove o histórico após confirmação.</span></div>
         </section>
       </main>
-
-      <footer class="page-footer"><span>ZERO TRUST LAB · PROTÓTIPO LOCAL V0</span><span>Somente simulação · sem tráfego real</span></footer>
+      <footer class="page-footer"><span>ZERO TRUST LAB · SIMULADOR LOCAL V1</span><span>Dados sintéticos · sem tráfego real</span></footer>
     </div>
   </div>
 
   <aside class="tweaks-panel" id="tweaks-panel" aria-label="Ajustes visuais" hidden>
     <div class="tweaks-header"><div><p class="section-kicker">APARÊNCIA</p><h2>Ajustes visuais</h2></div><button class="close-button" type="button" id="close-tweaks" aria-label="Fechar ajustes">Fechar</button></div>
-    <fieldset class="tweak-group"><legend>Densidade do painel</legend>
-      <button class="tweak-choice is-selected" type="button" data-density-choice="balanced" aria-pressed="true">Equilibrada</button>
-      <button class="tweak-choice" type="button" data-density-choice="compact" aria-pressed="false">Compacta</button>
-      <button class="tweak-choice" type="button" data-density-choice="presentation" aria-pressed="false">Apresentação</button>
-    </fieldset>
+    <fieldset class="tweak-group"><legend>Densidade do painel</legend><button class="tweak-choice is-selected" type="button" data-density-choice="balanced" aria-pressed="true">Equilibrada</button><button class="tweak-choice" type="button" data-density-choice="compact" aria-pressed="false">Compacta</button><button class="tweak-choice" type="button" data-density-choice="presentation" aria-pressed="false">Apresentação</button></fieldset>
     <div class="tweak-group"><span class="tweak-legend">Tema</span><button class="tweak-choice" type="button" id="theme-toggle" aria-pressed="false">Alternar tema claro</button></div>
     <p class="tweak-note">O tema escuro é o padrão do laboratório. Estes ajustes alteram somente a visualização desta sessão.</p>
   </aside>
