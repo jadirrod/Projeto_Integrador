@@ -49,7 +49,7 @@ O núcleo puro de `site/js/core/` avalia pedidos determinísticos e retorna deci
 
 ## Publicação
 
-O repositório atual usado é [`jadirrod/Projeto_Integrador`](https://github.com/jadirrod/Projeto_Integrador). O workflow `.github/workflows/pages.yml` valida a branch `main` e publica o diretório `site/` no GitHub Pages. A URL pública esperada para este nome de repositório é `https://jadirrod.github.io/Projeto_Integrador/`; ela só deve ser considerada disponível depois que o deploy terminar e a URL for confirmada nas configurações do Pages.
+O repositório atual usado é [`jadirrod/Projeto_Integrador`](https://github.com/jadirrod/Projeto_Integrador). O workflow `.github/workflows/pages.yml` valida a branch `main` e publica o diretório `site/` no GitHub Pages. A URL pública esperada para este nome de repositório é `https://jadirrod.github.io/Projeto_Integrador/?v=4425a91`; ela só deve ser considerada disponível depois que o deploy terminar e a URL for confirmada nas configurações do Pages.
 
 ## Referências
 
