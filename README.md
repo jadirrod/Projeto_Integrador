@@ -63,4 +63,4 @@ O repositório atual usado é [`jadirrod/Projeto_Integrador`](https://github.com
 
 ## Autoria e licença
 
-**Autor do artigo:** Jadir Gonçalves Rodrigues. **Instituição :** Centro Universitário Senac-RS — Campus Pelotas. O laboratório é um complemento tecnológico independente e não reproduz experimentos de infraestrutura do reais. A licença do software ainda não foi definida pelo responsável; nenhum arquivo `LICENSE` foi criado.
+**Autor do artigo:** Jadir Gonçalves Rodrigues. **Instituição :** Centro Universitário Senac-RS — Campus Pelotas. O laboratório é um complemento tecnológico independente e não reproduz experimentos de infraestrutura do reais. A licença do software ainda não foi definida; nenhum arquivo `LICENSE` foi criado.
